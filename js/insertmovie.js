@@ -1,3 +1,7 @@
+const out = function (str) {
+    console.log(str);
+}
+
 out("hej");
 
 document.addEventListener('DOMContentLoaded', createFormEventListener);
@@ -32,10 +36,6 @@ async function postFormDataAsJson(url, formData) {
     out(formData.entries());
     const plainFormData = Object.fromEntries(formData.entries());
     out(plainFormData);
-    /*
-    plainFormData.filmname = {};
-    plainFormData.region.regionCode = "1081";
-    */
 
     const formDataJsonString = JSON.stringify(plainFormData);
 
