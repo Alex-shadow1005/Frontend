@@ -5,10 +5,10 @@ out("hej");
 
 document.addEventListener('DOMContentLoaded', createFormEventListener);
 
-let countyForm;
+let movieForm;
 function createFormEventListener() {
-    countyForm = document.getElementById("newMovieForm");
-    countyForm.addEventListener('submit', handleFormSubmit);
+    movieForm = document.getElementById("newMovieForm");
+    movieForm.addEventListener('submit', handleFormSubmit);
 }
 
 async function handleFormSubmit(event) {
@@ -34,7 +34,6 @@ async function handleFormSubmit(event) {
 async function postFormDataAsJson(url, formData) {
     out(formData.entries());
     const plainFormData = Object.fromEntries(formData.entries());
-    out("xxxx");
     out(plainFormData);
     /*
     plainFormData.filmname = {};
