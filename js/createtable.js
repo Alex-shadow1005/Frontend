@@ -12,27 +12,24 @@ function addRow(movie) {
     out(inp);
     cell.appendChild(inp);
 
-    //update button
+    //movie_length
     cell = row.insertCell(colCount++);
-    const pbUpdate = document.createElement("input");
-    pbUpdate.type = "button";
-    pbUpdate.setAttribute('value', 'Opdater film');
-    pbUpdate.onclick = function () {
-        updateRow(movie, rowCount, row, inp);
-    }
-    cell.appendChild(pbUpdate);
+    const length = document.createElement('input');
+    length.type = "number";
+    length.setAttribute("value", movie.movie_length);
+    out(length);
+    cell.appendChild(length);
 
-    //delete button
+    //description
     cell = row.insertCell(colCount++);
-    const pbDelete = document.createElement("input");
-    pbDelete.type = "button";
-    pbDelete.setAttribute('value', 'Slet film');
-    pbDelete.onclick = function () {
-        deleteRow(movie, rowCount, row);
-    }
-    cell.appendChild(pbDelete);
+    const description = document.createElement('input');
+    description.type = "text";
+    description.setAttribute("value", movie.description);
+    out(description);
+    cell.appendChild(description);
 
-    const genreMap = new Map([[0,"Gyser"],[1,"Action"],[2, "Thriller"],[3, "Komedie"],[4, "Fantasy"], [5, "Romantik"], [6, "Drama"], [7, "Mystik"]]);
+    const genreMap = new Map([[0,"gyser"],[1,"action"],[2, "thriller"],[3, "komedie"],[4, "fantasy"], [5, "romantik"], [6, "drama"], [7, "mystik"]]);
+
     cell = row.insertCell(colCount++);
     const ddGenre = document.createElement("select");
     let ix = 0;
@@ -44,51 +41,79 @@ function addRow(movie) {
         ddGenre.appendChild(el);
         if (genre == movie.genre){
             ddGenre.selectedIndex = ix;
+
         }
         ix++;
         ddGenre.addEventListener("change", (event) => {
             const selind = ddGenre.selectedIndex;
+            out("index: " + selind);
             const opt = ddGenre.options[selind];
-
-            movie.genre = genreMap.get(opt.value);
-            out(movie.genre);
+            movie.genre = opt.value;
+            out("movie genre: " + movie.genre);
         })
     });
     cell.appendChild(ddGenre);
-/*
-    const pgMap = new Map([[0, "A"], [1, "7"], [2, "11"], [3, "15"], [4, "F"]]);
-    cell = row.insertCell(colCount++);
-    const ddPg = document.createElement("select");
-    let ix1 = 0;
-    pgMap.forEach(pgRating => {
-        const el = document.createElement("option");
-        el.textContent = pgRating;
-        el.value = pgRating;
-        ddPg.appendChild(el);
-        if(pgRating == movie.pg_rating){
-            ddPg.selectedIndex = ix1;
-        }
-        ix++;
-        ddPg.addEventListener("change", (event)=> {
-            const selind = ddPg.selectedIndex;
-            const opt = ddPg.options[selind];
-            movie.pg_rating = pgMap.get(opt.value);
-        })
-    })
-    cell.appendChild(ddPg);
 
-*/
+    const pgMap = new Map([[0, "A"],[1, "7"],[2, "11"],[3, "15"], [4, "F"]]);
+    cell = row.insertCell(colCount++);
+    const ddPG = document.createElement("select");
+    let ix1 = 0;
+    pgMap.forEach(pgrating => {
+        const el = document.createElement("option");
+        el.textContent = pgrating;
+        el.value = pgrating;
+        ddPG.appendChild(el);
+        if(pgrating === movie.pg_rating){
+            out(pgrating)
+            ddPG.selectedIndex = ix1;
+        }
+        ix1++;
+        ddPG.addEventListener("change", (event) => {
+            const selind = ddPG.selectedIndex;
+            const opt = ddPG.options[selind];
+            movie.pg_rating = opt.value;
+        })
+    });
+    cell.appendChild(ddPG);
+
+    //Release date
+    cell = row.insertCell(colCount++);
+
+    //delete button
+    cell = row.insertCell(colCount++);
+    const pbDelete = document.createElement("input");
+    pbDelete.type = "button";
+    pbDelete.setAttribute('value', 'Slet film');
+    pbDelete.onclick = function () {
+        deleteRow(movie, rowCount, row);
+    }
+    cell.appendChild(pbDelete);
+
+
+    //update button
+    cell = row.insertCell(colCount++);
+    const pbUpdate = document.createElement("input");
+    pbUpdate.type = "button";
+    pbUpdate.setAttribute('value', 'Opdater film');
+    pbUpdate.onclick = function () {
+        updateRow(movie, rowCount, row, inp, length, description);
+    }
+    cell.appendChild(pbUpdate);
+
 
 } //addRow
 
-async function updateRow(movie, rowNo, row, inputfield) {
+async function updateRow(movie, rowNo, row, inputfield, inputfield1, inputfield2) {
     out(movie);
-    movie.name = inputfield.value;
+    movie.movie_name = inputfield.value;
+    movie.movie_length = inputfield1.value;
+    movie.description = inputfield2.value;
+
     const response = await restUpdateMovie(movie);
     out("nu har vi opdateret");
     out(response);
     //crazy rule, only change name once
-    inputfield.setAttribute('readonly', 'readonly');
+    //inputfield.setAttribute('readonly', 'readonly');
 }
 
 async function restUpdateMovie(movie) {
