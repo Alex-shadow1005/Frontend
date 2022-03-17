@@ -1,5 +1,4 @@
 createMovieMap();
-createGenreMap();
 
 function addRow(movie) {
     const rowCount = movieTable.rows.length;
@@ -31,26 +30,7 @@ function addRow(movie) {
     cell.appendChild(description);
 
     //Genre
-    cell = row.insertCell(colCount++);
-    const ddGenre = document.createElement('select');
-    let i = 0;
-    movieMap.forEach(genre => {
-        const element = document.createElement("option");
-        element.textContent = genre.genre;
-        out(genre);
-        element.value = genre.genre;
-        ddGenre.appendChild(element);
-        if (genre.genre === movie.genre.genre) {
-            ddGenre.selectedIndex = i;
-        }
-        i++;
-        ddGenre.addEventListener("change", (event) => {
-            const selectIndex = ddGenre.selectedIndex;
-            const opt = ddGenre.options[selectIndex];
-            movie.genre = movieMap.get(opt.value);
-        })
-    })
-    cell.appendChild(ddGenre);
+
 
     //update button
     cell = row.insertCell(colCount++);
