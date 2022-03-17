@@ -32,6 +32,53 @@ function addRow(movie) {
     }
     cell.appendChild(pbDelete);
 
+    const genreMap = new Map([[0,"Gyser"],[1,"Action"],[2, "Thriller"],[3, "Komedie"],[4, "Fantasy"], [5, "Romantik"], [6, "Drama"], [7, "Mystik"]]);
+    cell = row.insertCell(colCount++);
+    const ddGenre = document.createElement("select");
+    let ix = 0;
+    genreMap.forEach(genre => {
+        out(genre);
+        const el = document.createElement("option");
+        el.textContent = genre;
+        el.value = genre;
+        ddGenre.appendChild(el);
+        if (genre == movie.genre){
+            ddGenre.selectedIndex = ix;
+        }
+        ix++;
+        ddGenre.addEventListener("change", (event) => {
+            const selind = ddGenre.selectedIndex;
+            const opt = ddGenre.options[selind];
+
+            movie.genre = genreMap.get(opt.value);
+            out(movie.genre);
+        })
+    });
+    cell.appendChild(ddGenre);
+/*
+    const pgMap = new Map([[0, "A"], [1, "7"], [2, "11"], [3, "15"], [4, "F"]]);
+    cell = row.insertCell(colCount++);
+    const ddPg = document.createElement("select");
+    let ix1 = 0;
+    pgMap.forEach(pgRating => {
+        const el = document.createElement("option");
+        el.textContent = pgRating;
+        el.value = pgRating;
+        ddPg.appendChild(el);
+        if(pgRating == movie.pg_rating){
+            ddPg.selectedIndex = ix1;
+        }
+        ix++;
+        ddPg.addEventListener("change", (event)=> {
+            const selind = ddPg.selectedIndex;
+            const opt = ddPg.options[selind];
+            movie.pg_rating = pgMap.get(opt.value);
+        })
+    })
+    cell.appendChild(ddPg);
+
+*/
+
 } //addRow
 
 async function updateRow(movie, rowNo, row, inputfield) {
