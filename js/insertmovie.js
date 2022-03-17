@@ -37,9 +37,6 @@ async function postFormDataAsJson(url, formData) {
     const plainFormData = Object.fromEntries(formData.entries());
     out(plainFormData);
 
-    plainFormData.genre = {};
-    plainFormData.genre.genreid = "";
-
     const formDataJsonString = JSON.stringify(plainFormData);
 
     const fetchOptions = {
