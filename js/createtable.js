@@ -1,16 +1,56 @@
 createMovieMap();
+createGenreMap();
 
 function addRow(movie) {
     const rowCount = movieTable.rows.length;
     let row = movieTable.insertRow(rowCount);
     let colCount = 0;
 
+    //movie_name
     let cell = row.insertCell(colCount++);
-    const inp = document.createElement('input');
-    inp.type = "text";
-    inp.setAttribute("value", movie.movie_name);
-    out(inp);
-    cell.appendChild(inp);
+    const name = document.createElement('input');
+    name.type = "text";
+    name.setAttribute("value", movie.movie_name);
+    out(name);
+    cell.appendChild(name);
+
+    //movie_length
+    cell = row.insertCell(colCount++);
+    const length = document.createElement('input');
+    length.type = "number";
+    length.setAttribute("value", movie.movie_length);
+    out(length);
+    cell.appendChild(length);
+
+    //description
+    cell = row.insertCell(colCount++);
+    const description = document.createElement('input');
+    description.type = "text";
+    description.setAttribute("value", movie.description);
+    out(description);
+    cell.appendChild(description);
+
+    //Genre
+    cell = row.insertCell(colCount++);
+    const ddGenre = document.createElement('select');
+    let i = 0;
+    movieMap.forEach(genre => {
+        const element = document.createElement("option");
+        element.textContent = genre.genre;
+        out(genre);
+        element.value = genre.genre;
+        ddGenre.appendChild(element);
+        if (genre.genre === movie.genre.genre) {
+            ddGenre.selectedIndex = i;
+        }
+        i++;
+        ddGenre.addEventListener("change", (event) => {
+            const selectIndex = ddGenre.selectedIndex;
+            const opt = ddGenre.options[selectIndex];
+            movie.genre = movieMap.get(opt.value);
+        })
+    })
+    cell.appendChild(ddGenre);
 
     //update button
     cell = row.insertCell(colCount++);
@@ -18,7 +58,7 @@ function addRow(movie) {
     pbUpdate.type = "button";
     pbUpdate.setAttribute('value', 'Opdater film');
     pbUpdate.onclick = function () {
-        updateRow(movie, rowCount, row, inp);
+        updateRow(movie, rowCount, row, name);
     }
     cell.appendChild(pbUpdate);
 
@@ -36,7 +76,7 @@ function addRow(movie) {
 
 async function updateRow(movie, rowNo, row, inputfield) {
     out(movie);
-    movie.name = inputfield.value;
+    movie.movie_name = inputfield.value;
     const response = await restUpdateMovie(movie);
     out("nu har vi opdateret");
     out(response);

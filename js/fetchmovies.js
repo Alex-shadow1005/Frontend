@@ -17,7 +17,7 @@ async function createMovieMap() {
     const movieList = await fetchAllMovies();
     movieList.forEach((movie, index) => {
         //out(kommune.navn + "ix=" + index);
-        movieMap.set(movie.name, movie);
+        movieMap.set(movie.movie_name, movie);
     })
 }
 

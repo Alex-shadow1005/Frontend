@@ -65,6 +65,10 @@ input[type="button"] {
     border: none;
 }
 
+input[type="number"] {
+    text-align:center;
+}
+
 input[type="button"]:hover {
     background-color: #009789;
     cursor: pointer;
