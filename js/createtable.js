@@ -78,6 +78,11 @@ function addRow(movie) {
 
     //Release date
     cell = row.insertCell(colCount++);
+    const releasedate = document.createElement('input');
+    releasedate.type = "text";
+    releasedate.setAttribute("value", movie.release_date);
+    out(releasedate);
+    cell.appendChild(releasedate);
 
     //delete button
     cell = row.insertCell(colCount++);
@@ -96,18 +101,19 @@ function addRow(movie) {
     pbUpdate.type = "button";
     pbUpdate.setAttribute('value', 'Opdater film');
     pbUpdate.onclick = function () {
-        updateRow(movie, rowCount, row, inp, length, description);
+        updateRow(movie, rowCount, row, inp, length, description, releasedate);
     }
     cell.appendChild(pbUpdate);
 
 
 } //addRow
 
-async function updateRow(movie, rowNo, row, inputfield, inputfield1, inputfield2) {
+async function updateRow(movie, rowNo, row, name, length, description, releasedate) {
     out(movie);
-    movie.movie_name = inputfield.value;
-    movie.movie_length = inputfield1.value;
-    movie.description = inputfield2.value;
+    movie.movie_name = name.value;
+    movie.movie_length = length.value;
+    movie.description = description.value;
+    movie.release_date = releasedate.value;
 
     const response = await restUpdateMovie(movie);
     out("nu har vi opdateret");
