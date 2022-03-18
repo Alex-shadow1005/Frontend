@@ -28,8 +28,8 @@ function addRow(movie) {
     out(description);
     cell.appendChild(description);
 
+    //genre
     const genreMap = new Map([[0,"gyser"],[1,"action"],[2, "thriller"],[3, "komedie"],[4, "fantasy"], [5, "romantik"], [6, "drama"], [7, "mystik"]]);
-
     cell = row.insertCell(colCount++);
     const ddGenre = document.createElement("select");
     let ix = 0;
@@ -54,6 +54,7 @@ function addRow(movie) {
     });
     cell.appendChild(ddGenre);
 
+    //AgeRating
     const pgMap = new Map([[0, "A"],[1, "7"],[2, "11"],[3, "15"], [4, "F"]]);
     cell = row.insertCell(colCount++);
     const ddPG = document.createElement("select");
@@ -84,6 +85,15 @@ function addRow(movie) {
     out(releasedate);
     cell.appendChild(releasedate);
 
+    //image_link
+    cell = row.insertCell(colCount++);
+    const imagelink = document.createElement('a');
+    imagelink.type = "text";
+    imagelink.setAttribute("href", movie.image_link);
+    imagelink.innerHTML = "link";
+    out(imagelink);
+    cell.appendChild(imagelink);
+
     //delete button
     cell = row.insertCell(colCount++);
     const pbDelete = document.createElement("input");
@@ -101,19 +111,20 @@ function addRow(movie) {
     pbUpdate.type = "button";
     pbUpdate.setAttribute('value', 'Opdater film');
     pbUpdate.onclick = function () {
-        updateRow(movie, rowCount, row, inp, length, description, releasedate);
+        updateRow(movie, rowCount, row, inp, length, description, releasedate, imagelink);
     }
     cell.appendChild(pbUpdate);
 
 
 } //addRow
 
-async function updateRow(movie, rowNo, row, name, length, description, releasedate) {
+async function updateRow(movie, rowNo, row, name, length, description, releasedate, imagelink) {
     out(movie);
     movie.movie_name = name.value;
     movie.movie_length = length.value;
     movie.description = description.value;
     movie.release_date = releasedate.value;
+    movie.image_link = imagelink.value;
 
     const response = await restUpdateMovie(movie);
     out("nu har vi opdateret");
