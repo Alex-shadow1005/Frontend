@@ -1,6 +1,7 @@
-const out = function (str) {
+const out = function (str){
     console.log(str);
 }
+
 out("hej");
 
 document.addEventListener('DOMContentLoaded', createFormEventListener);
