@@ -1,5 +1,20 @@
 const date = new Date();
 
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
 const renderCalendar = () => {
   date.setDate(1);
 
@@ -27,21 +42,6 @@ const renderCalendar = () => {
 
   const nextDays = 7 - lastDayIndex - 1;
 
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
   document.querySelector(".date h1").innerHTML = months[date.getMonth()];
 
   document.querySelector(".date p").innerHTML = new Date().toDateString();
@@ -57,10 +57,11 @@ const renderCalendar = () => {
       i === new Date().getDate() &&
       date.getMonth() === new Date().getMonth()
     ) {
-      days += `<div class="today">${i}</div>`;
+      days += `<div class="today" onclick="dateSelect(${i})">${i}</div>`;
     } else {
-      days += `<div>${i}</div>`;
+      days += `<div onclick="dateSelect(${i})">${i}</div>`;
     }
+
   }
 
   for (let j = 1; j <= nextDays; j++) {
@@ -80,3 +81,9 @@ document.querySelector(".next").addEventListener("click", () => {
 });
 
 renderCalendar();
+
+function dateSelect(dayNumber){
+  console.log("vis film for dagen " + dayNumber + "/" +  months[date.getMonth()]);
+}
+
+
