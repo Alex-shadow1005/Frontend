@@ -6,10 +6,10 @@ out("hej");
 
 document.addEventListener('DOMContentLoaded', createFormEventListener);
 
-let movieForm;
+let showingForm;
 function createFormEventListener() {
-    movieForm = document.getElementById("newMovieForm");
-    movieForm.addEventListener('submit', handleFormSubmit);
+    showingForm = document.getElementById("newShowingForm");
+    showingForm.addEventListener('submit', handleFormSubmit);
 }
 
 async function handleFormSubmit(event) {
@@ -24,7 +24,7 @@ async function handleFormSubmit(event) {
         out(formData);
         const responseData = await postFormDataAsJson(url, formData);
         out(responseData);
-        alert(formData.get('movie_name') + ' er oprettet');
+        alert(formData.get('showingDate') + ' er oprettet');
 
     } catch (err) {
         alert(err.message);
@@ -35,7 +35,11 @@ async function handleFormSubmit(event) {
 async function postFormDataAsJson(url, formData) {
     out(formData.entries());
     const plainFormData = Object.fromEntries(formData.entries());
+    console.log("plain form data")
     out(plainFormData);
+
+    plainFormData.movie = {};
+    plainFormData.movie.movieID = 1;
 
 
     const formDataJsonString = JSON.stringify(plainFormData);
@@ -51,6 +55,7 @@ async function postFormDataAsJson(url, formData) {
         const errorMessage = await response.text();
         throw new Error(errorMessage);
     }
+    console.log("response JSON");
     console.log(response.json);
     return response.json();
 }
