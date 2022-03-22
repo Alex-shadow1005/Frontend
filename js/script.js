@@ -1,7 +1,9 @@
 const date = new Date();
 
+const url = 'http://localhost:8181/showingbydate';
+
 const renderCalendar = () => {
-  date.setDate(1);
+  //date.setDate(1);
 
   const monthDays = document.querySelector(".days");
 
@@ -46,6 +48,7 @@ const renderCalendar = () => {
 
   document.querySelector(".date p").innerHTML = new Date().toDateString();
 
+
   let days = "";
 
   for (let x = firstDayIndex; x > 0; x--) {
@@ -66,7 +69,9 @@ const renderCalendar = () => {
   for (let j = 1; j <= nextDays; j++) {
     days += `<div class="next-date">${j}</div>`;
     monthDays.innerHTML = days;
+
   }
+
 };
 
 document.querySelector(".prev").addEventListener("click", () => {
@@ -78,5 +83,13 @@ document.querySelector(".next").addEventListener("click", () => {
   date.setMonth(date.getMonth() + 1);
   renderCalendar();
 });
+
+document.querySelector(".days").addEventListener("click", () => {
+  window.localStorage.setItem('date', date.toDateString());
+  window.location.href = "showingsdate.html";
+
+})
+
+
 
 renderCalendar();
