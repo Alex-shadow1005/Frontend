@@ -25,7 +25,6 @@ async function handleFormSubmit(event) {
         const responseData = await postFormDataAsJson(url, formData);
         out(responseData);
         alert(formData.get('movie_name') + ' er oprettet');
-
     } catch (err) {
         alert(err.message);
         out(err);

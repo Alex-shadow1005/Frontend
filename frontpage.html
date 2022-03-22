@@ -7,24 +7,37 @@
 </head>
 <body>
 <div class="container">
+
     <h1>Movies</h1>
     <div class="row">
-        <p id="getMovies"></p>
-        <p id="createTable"></p>
-        <input id="inperror" type="hidden"/>
-        <table class="content-table" id="frontpageTable">
-            <thead>
-            <tr>
-                <th>Image</th>
-                <th>Image</th>
-                <th>Image</th>
-                <br>
-            </tr>
-            </thead>
-        </table>
+        <p id="getMovies" hidden></p>
+        <p id="createTable" hidden></p>
+        <p id="createFrontpageTable" hidden></p>
     </div>
+    <input id="inperror" type="hidden"/>
+
+    <section>
+        <div id="movies">
+        </div>
+    </section>
+
+
+    <!--<table class="content-table" id="frontpageTable">
+        <thead>
+        <tr class="table-images">
+            <th>Image</th>
+            <th>Image</th>
+            <th>Image</th>
+            <br>
+        </tr>
+        </thead>
+        <tr></tr>
+    </table>-->
+
 </div>
-<script src="js/createtable.js"></script>
 <script src="js/fetchmovies.js"></script>
+<script src="js/createtable.js"></script>
+<script src="js/frontpagetable.js"></script>
+
 </body>
 </html>

@@ -43,6 +43,15 @@
     text-align: center;
 }
 
+img {
+    max-width: 25%;
+    max-height: 25%;
+    border: 1px solid #000000;
+}
+
+#movies {
+}
+
 .content-table tbody tr {
     border-bottom: 1px solid #dddddd;
 }
