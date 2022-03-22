@@ -5,12 +5,37 @@ const out = function (str){
 out("hej");
 
 document.addEventListener('DOMContentLoaded', createFormEventListener);
+const moviesUrl = 'http://localhost:8181/movies';
 
 let showingForm;
 function createFormEventListener() {
     showingForm = document.getElementById("newShowingForm");
     showingForm.addEventListener('submit', handleFormSubmit);
 }
+
+
+callMovieMap();
+
+function fetchAllMovies() {
+    out("get all film kaldt");
+    return fetch(moviesUrl).then(response => response.json());
+}
+
+const movieMap = new Map();
+async function createMovieMap() {
+    out("show alle film");
+    const movieList = await fetchAllMovies();
+    movieList.forEach((movie, index) => {
+        out(movie.movie_name);
+        movieMap.set(movie.movie_name, movie);
+    })
+}
+
+async function callMovieMap(){
+    await createMovieMap();
+}
+
+
 
 async function handleFormSubmit(event) {
     event.preventDefault();
@@ -39,7 +64,8 @@ async function postFormDataAsJson(url, formData) {
     out(plainFormData);
 
     plainFormData.movie = {};
-    plainFormData.movie.movieID = 1;
+    plainFormData.movie.movieID = ddMovies.value;
+    out(ddMovies.value);
 
 
     const formDataJsonString = JSON.stringify(plainFormData);
@@ -59,3 +85,23 @@ async function postFormDataAsJson(url, formData) {
     console.log(response.json);
     return response.json();
 }
+
+async function movieDropDown() {
+//Create a dropdown
+    out(movieMap);
+    movieMap.forEach(movie => {
+        out(movie);
+        const el = document.createElement("option");
+        el.textContent = movie.movie_name;
+        el.value = movie.movieID;
+        ddMovies.appendChild(el);
+
+    });
+}
+
+const pbFillDropDown = document.getElementById('pbFillDropDown');
+const ddMovies = document.getElementById("ddMovies");
+
+pbFillDropDown.addEventListener('click', movieDropDown);
+out(pbFillDropDown);
+
