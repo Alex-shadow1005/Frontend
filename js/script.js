@@ -60,9 +60,9 @@ const renderCalendar = () => {
       i === new Date().getDate() &&
       date.getMonth() === new Date().getMonth()
     ) {
-      days += `<div class="today">${i}</div>`;
+      days += `<div class="today" onclick="dateSelect(${i})">${i}</div>`;
     } else {
-      days += `<div id="target" class="${i}">${i}</div>`;
+      days += `<div onclick="dateSelect(${i})">${i}</div>`;
     }
   }
 
@@ -84,37 +84,12 @@ document.querySelector(".next").addEventListener("click", () => {
   renderCalendar();
 });
 
-document.querySelector(".target").addEventListener("click", () => {
-  let element = document.getElementById("target").className;
-  console.log(element);
-
-
-})
-
-document.querySelector(".days").addEventListener("click", (evt) => {
-  console.log();
-
-
-  window.localStorage.setItem('date', date.toDateString());
-  window.location.href = "showingsdate.html";
-});
-
-
-
-/*
-document.querySelector(".kald").addEventListener("click", (evt) => {
-  out(evt);
-  window.localStorage.setItem('date', date.toDateString());
-  window.location.href = "showingsdate.html";
-
-})
-document.querySelectorAll(".kald2").addEventListener("click", (evt) => {
-  out(evt);
-  window.localStorage.setItem('date', date.toDateString());
-  window.location.href = "showingsdate.html";
-
-})*/
-
-
-
 renderCalendar();
+
+function dateSelect(dayNumber){
+  date.setDate(dayNumber);
+  window.localStorage.setItem('date', date.toDateString());
+  window.location.href = "showingsdate.html";
+
+  console.log("vis film for dagen " + dayNumber + "/" +  months[date.getMonth()]);
+}
