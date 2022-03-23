@@ -62,7 +62,7 @@ const renderCalendar = () => {
     ) {
       days += `<div class="today">${i}</div>`;
     } else {
-      days += `<div>${i}</div>`;
+      days += `<div id="target" class="${i}">${i}</div>`;
     }
   }
 
@@ -84,11 +84,36 @@ document.querySelector(".next").addEventListener("click", () => {
   renderCalendar();
 });
 
-document.querySelector(".days").addEventListener("click", () => {
+document.querySelector(".target").addEventListener("click", () => {
+  let element = document.getElementById("target").className;
+  console.log(element);
+
+
+})
+
+document.querySelector(".days").addEventListener("click", (evt) => {
+  console.log();
+
+
+  window.localStorage.setItem('date', date.toDateString());
+  window.location.href = "showingsdate.html";
+});
+
+
+
+/*
+document.querySelector(".kald").addEventListener("click", (evt) => {
+  out(evt);
   window.localStorage.setItem('date', date.toDateString());
   window.location.href = "showingsdate.html";
 
 })
+document.querySelectorAll(".kald2").addEventListener("click", (evt) => {
+  out(evt);
+  window.localStorage.setItem('date', date.toDateString());
+  window.location.href = "showingsdate.html";
+
+})*/
 
 
 
