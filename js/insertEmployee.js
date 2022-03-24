@@ -2,15 +2,15 @@ const out = function (str){
     console.log(str);
 }
 
-out("hej");
-
 document.addEventListener('DOMContentLoaded', createFormEventListener);
 
-let movieForm;
-function createFormEventListener() {
-    movieForm = document.getElementById("newMovieForm");
-    movieForm.addEventListener('submit', handleFormSubmit);
+let employeeForm;
+
+function createFormEventListener(){
+    employeeForm = document.getElementById("newEmployeeForm");
+    employeeForm.addEventListener('submit', handleFormSubmit);
 }
+
 
 async function handleFormSubmit(event) {
     event.preventDefault();
@@ -24,7 +24,8 @@ async function handleFormSubmit(event) {
         out(formData);
         const responseData = await postFormDataAsJson(url, formData);
         out(responseData);
-        alert(formData.get('movie_name') + ' er oprettet');
+        alert(formData.get('employee_email') + ' er oprettet');
+
     } catch (err) {
         alert(err.message);
         out(err);
@@ -34,11 +35,6 @@ async function handleFormSubmit(event) {
 async function postFormDataAsJson(url, formData) {
     out(formData.entries());
     const plainFormData = Object.fromEntries(formData.entries());
-    out(plainFormData);
-    /*
-    plainFormData.filmname = {};
-    plainFormData.region.regionCode = "1081";
-    */
 
     const formDataJsonString = JSON.stringify(plainFormData);
 
@@ -56,3 +52,4 @@ async function postFormDataAsJson(url, formData) {
     console.log(response.json);
     return response.json();
 }
+

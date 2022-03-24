@@ -2,14 +2,13 @@ const out = function (str){
     console.log(str);
 }
 
-out("hej");
-
 document.addEventListener('DOMContentLoaded', createFormEventListener);
 
-let movieForm;
-function createFormEventListener() {
-    movieForm = document.getElementById("newMovieForm");
-    movieForm.addEventListener('submit', handleFormSubmit);
+let employeeLoginForm;
+
+function createFormEventListener(){
+    employeeLoginForm = document.getElementById("newLoginForm");
+    employeeLoginForm.addEventListener('submit', handleFormSubmit);
 }
 
 async function handleFormSubmit(event) {
@@ -24,7 +23,8 @@ async function handleFormSubmit(event) {
         out(formData);
         const responseData = await postFormDataAsJson(url, formData);
         out(responseData);
-        alert(formData.get('movie_name') + ' er oprettet');
+        //alert(formData.get('employee_email') + ' er logget ind');
+
     } catch (err) {
         alert(err.message);
         out(err);
@@ -34,11 +34,6 @@ async function handleFormSubmit(event) {
 async function postFormDataAsJson(url, formData) {
     out(formData.entries());
     const plainFormData = Object.fromEntries(formData.entries());
-    out(plainFormData);
-    /*
-    plainFormData.filmname = {};
-    plainFormData.region.regionCode = "1081";
-    */
 
     const formDataJsonString = JSON.stringify(plainFormData);
 
@@ -53,6 +48,18 @@ async function postFormDataAsJson(url, formData) {
         const errorMessage = await response.text();
         throw new Error(errorMessage);
     }
-    console.log(response.json);
-    return response.json();
+    //console.log(response.json);
+    //return location.href = "index.html";
+    if(response.status != "404"){
+        sessionStorage.setItem("admin", true);
+        window.location.href = "index.html";
+    }else{
+        alert("Forkert email eller password, prøv igen");
+    }
+
+
+
+
+
+
 }

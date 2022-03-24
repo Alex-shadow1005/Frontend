@@ -177,7 +177,7 @@ async function restDeleteMovie(movie) {
     return response;
 } //restDeleteMovie
 
-function createTableFromMap() {
+async function createTableFromMap() {
     out("create table");
     movieMap.forEach(movie => addRow(movie)
     )

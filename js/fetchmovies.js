@@ -32,21 +32,9 @@ function showMovieMap() {
 
 callMovieMap();
 
-
-//callGetAllKommuner();
-/*createMovieMap();
-fetchAllMovies();
-showMovieMap();
-movieDropDown();
-
- */
-//fillMoviesDD();
-
 const pbFetchMovies = document.getElementById('getMovies');
 const tblMovies = document.getElementById('movieTable');
 
 
-//add event listeners
-//pbFetchMovies.addEventListener('click', createMovieMap);
 out(pbFetchMovies);
 
