@@ -67,7 +67,7 @@ function addSRow(showing) {
 
     cell = row.insertCell(colCount++);
     const booknow = document.createElement('a');
-    booknow.setAttribute('href', 'html/booking.html');
+    booknow.setAttribute('href', 'booking.html');
     booknow.innerText = "book nu"
     cell.appendChild(booknow);
 
