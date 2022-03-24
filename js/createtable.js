@@ -115,6 +115,7 @@ async function updateRow(movie, rowNo, row, name, length, description, releaseda
     movie.description = description.value;
     movie.release_date = releasedate.value;
 
+
     const response = await restUpdateMovie(movie);
     out("nu har vi opdateret");
     out(response);
