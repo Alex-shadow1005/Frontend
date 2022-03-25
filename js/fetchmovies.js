@@ -15,7 +15,7 @@ const movieMap = new Map();
 async function createMovieMap() {
     out("show alle film");
     const movieList = await fetchAllMovies();
-    movieList.forEach((movie, index) => {
+    movieList.forEach((movie) => {
         out(movie.movie_name);
         movieMap.set(movie.movie_name, movie);
     })
@@ -29,6 +29,7 @@ function showMovieMap() {
         ;//out(movieMap.get(movieKey));
     }
 }
+
 
 callMovieMap();
 

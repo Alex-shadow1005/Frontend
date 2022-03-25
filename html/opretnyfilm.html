@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Opret Ny Film</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<h1>Opret ny film</h1>
-<a href="index.html">Gå tilbage</a>
+<h1>Insert Film</h1>
+<center><a href="index.html" class="btn-options">Index</a></center>
+<br><br>
 <div>
     <form action="http://localhost:8181/movie" method="post" id="newMovieForm">
         <label for="movie_name"></label>
@@ -36,6 +38,8 @@
         </select>
         <label for="release_date"></label>
         <input type="text" name="release_date" placeholder="release date">
+        <label for="image_link"></label>
+        <input type="text" name="image_link" placeholder="image">
 
         <button type=submit title="Gem" id="submit">Opret</button>
     </form>
