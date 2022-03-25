@@ -73,7 +73,7 @@ section {
   margin-top: 3em; }
 
 .info {
-  background: url("../img/abstract-technology-banner-background.jpg") no-repeat center center;
+  background: url("../img/MicrosoftTeams-imagetest2.png") no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -99,13 +99,12 @@ ul.info li {
   margin-bottom: 1em;
   margin-left: 2em;
   position: center; }
-.info li span{
-  color: var(--primary-coler);
-}
+
 .info li{
   font-size: 100px;
   text-align: center;
 }
+
 
 --------- ul.info li:before {
   content: '';
