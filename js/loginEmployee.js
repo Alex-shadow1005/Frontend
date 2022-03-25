@@ -23,7 +23,6 @@ async function handleFormSubmit(event) {
         out(formData);
         const responseData = await postFormDataAsJson(url, formData);
         out(responseData);
-        //alert(formData.get('employee_email') + ' er logget ind');
 
     } catch (err) {
         alert(err.message);
@@ -48,8 +47,6 @@ async function postFormDataAsJson(url, formData) {
         const errorMessage = await response.text();
         throw new Error(errorMessage);
     }
-    //console.log(response.json);
-    //return location.href = "index.html";
     if(response.status == "404"){
         alert("Forkert email eller password, prøv igen");
     }else{

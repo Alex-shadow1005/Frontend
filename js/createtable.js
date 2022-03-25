@@ -130,8 +130,7 @@ async function updateRow(movie, rowNo, row, name, length, description, releaseda
     const response = await restUpdateMovie(movie);
     out("nu har vi opdateret");
     out(response);
-    //crazy rule, only change name once
-    //inputfield.setAttribute('readonly', 'readonly');
+
 }
 
 async function restUpdateMovie(movie) {
