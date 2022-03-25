@@ -1,13 +1,10 @@
-const out = function (str){
-    console.log(str);
-}
-
 out("hej booking");
 
 document.addEventListener('DOMContentLoaded', createFormEventListener);
 
 let bookingForm;
 function createFormEventListener() {
+
     bookingForm = document.getElementById("newBookingForm");
     bookingForm.addEventListener('submit', handleFormSubmit);
 }

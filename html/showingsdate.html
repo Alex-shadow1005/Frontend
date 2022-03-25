@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="../css/showingstyle.css">
 
 </head>
 <body>
@@ -32,7 +33,23 @@
     </table>
 
 </div>
+
+<div class="popup">
+    <div class="formPopUp" id="popUpForm">
+        <form action="http://localhost:8181/booking" method="post" id="newBookingForm">
+            <label for="bookingname"></label>
+            <input type="text" name="bookingname" placeholder="navn">
+            <label for="phonenumber"></label>
+            <input type="text" name="phonenumber" placeholder="telefon nummer">
+            <label for="noOPeople"></label>
+            <input type="text"  name="noOfPeople" placeholder="antal billetter">
+            <button type=submit title="Gem" id="submit">Opret</button>
+        </form>
+    </div>
+</div>
+
 <script src="../js/fetchshowings.js"></script>
 <script src="../js/createtableshowing.js"></script>
+<script src="../js/insertbooking.js"></script>
 </body>
 </html>

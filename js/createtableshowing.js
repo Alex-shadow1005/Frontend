@@ -1,11 +1,11 @@
-createShowingMap()
+createShowingMap();
 
 function addSRow(showing) {
     const rowCount = showingTable.rows.length;
     console.log(rowCount);
     let row = showingTable.insertRow(rowCount);
     let colCount = 0;
-
+    window.localStorage.setItem(row.rowIndex.toString(),showing.showingID.toString());
     let cell = row.insertCell(colCount++);
     const inp = document.createElement('input');
     inp.type = "text";
@@ -66,22 +66,43 @@ function addSRow(showing) {
     cell.appendChild(showingtime);
 
     cell = row.insertCell(colCount++);
+    const pbPopUp = document.createElement("input");
+    pbPopUp.type = "button";
+    pbPopUp.setAttribute('value', 'Slet Kommune');
+    pbPopUp.onclick = function () {
+        goToBookin(row.rowIndex);
+    }
+    cell.appendChild(pbPopUp);
+/*
     const booknow = document.createElement('a');
     booknow.setAttribute('href', 'booking.html');
     booknow.innerText = "book nu"
     cell.appendChild(booknow);
-
+*/
 }
 function createTableSFromMap() {
     out("create table");
     showingMap.forEach(showing => addSRow(showing))
 }
 
-async function goToBooking(showingID){
-    localStorage.setItem('showID', showingID);
-    window.location.href = "booking.html";
+async function goToBookin(rowIndex){
+    let testy =localStorage.getItem(rowIndex.toString())
+    window.localStorage.setItem('showID', testy);
+    console.log(testy);
+    openForm();
+
+
 
 }
+
+async function openForm() {
+    document.getElementById("popUpForm").style.display = "block";
+
+}
+async function closeForm() {
+    document.getElementById("popUpForm").style.display = "none";
+}
+
 const pbCreateTableShowing = document.getElementById("createTableShowing");
 
 const showingTable = document.getElementById("showingTable");
