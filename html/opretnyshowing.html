@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+</head>
+<body>
+<h1>Insert Showing</h1>
+<a href="index.html">Gå tilbage</a>
+<div>
+    <form action="http://localhost:8181/showing" method="post" id="newShowingForm">
+        <label for="showingDate"></label>
+        <input type="date" name="showingDate" placeholder="showing date">
+        <label for="showingTime"></label>
+        <input type="time" name="showingTime" placeholder="showing time" step="1">
+        <button type="button"  id="pbFillDropDown">Hent film til dropdown</button>
+        <select id="ddMovies"></select>
+
+
+        <button type=submit title="Gem" id="submit">Opret</button>
+    </form>
+
+</div>
+<script src="../js/insertshowing.js"></script>
+<script src="../js/fetchmovies.js"></script>
+
+
+
+
+</body>
+</html>

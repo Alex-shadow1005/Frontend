@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking</title>
+</head>
+<body>
+<h1>Book afspiling</h1>
+<div>
+    <form action="http://localhost:8181/booking" method="post" id="newBookingForm">
+        <label for="bookingname"></label>
+        <input type="text" name="bookingname" placeholder="navn">
+        <label for="phonenumber"></label>
+        <input type="text" name="phonenumber" placeholder="telefon nummer">
+        <label for="noOPeople"></label>
+        <input type="text"  name="noOfPeople" placeholder="antal billetter">
+        <button type=submit title="Gem" id="submit">Opret</button>
+    </form>
+
+
+</div>
+<script src="../js/insertbooking.js"></script>
+</body>
+</html>

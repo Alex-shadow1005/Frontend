@@ -1,20 +1,17 @@
-const out = function (str){
-    console.log(str);
-}
-
-out("hej");
+out("hej booking");
 
 document.addEventListener('DOMContentLoaded', createFormEventListener);
 
-let movieForm;
+let bookingForm;
 function createFormEventListener() {
-    movieForm = document.getElementById("newMovieForm");
-    movieForm.addEventListener('submit', handleFormSubmit);
+
+    bookingForm = document.getElementById("newBookingForm");
+    bookingForm.addEventListener('submit', handleFormSubmit);
 }
 
 async function handleFormSubmit(event) {
     event.preventDefault();
-    out("hej1");
+    out("hej1b");
     const form = event.currentTarget;
     const url = form.action;
     out(form);
@@ -24,7 +21,8 @@ async function handleFormSubmit(event) {
         out(formData);
         const responseData = await postFormDataAsJson(url, formData);
         out(responseData);
-        alert(formData.get('movie_name') + ' er oprettet');
+        alert(formData.get('bookingname') + ' er oprettet');
+
     } catch (err) {
         alert(err.message);
         out(err);
@@ -35,10 +33,9 @@ async function postFormDataAsJson(url, formData) {
     out(formData.entries());
     const plainFormData = Object.fromEntries(formData.entries());
     out(plainFormData);
-    /*
-    plainFormData.filmname = {};
-    plainFormData.region.regionCode = "1081";
-    */
+    plainFormData.showing = {};
+    plainFormData.showing.showingID = localStorage.getItem('showID');
+
 
     const formDataJsonString = JSON.stringify(plainFormData);
 

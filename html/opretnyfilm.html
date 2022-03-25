@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Opret ny film</h1>
+<a href="index.html">Gå tilbage</a>
+<div>
+    <form action="http://localhost:8181/movie" method="post" id="newMovieForm">
+        <label for="movie_name"></label>
+        <input type="text" name="movie_name" placeholder="movie name">
+        <label for="movie_length"></label>
+        <input type="text" name="movie_length" placeholder="length">
+        <label for="description"></label>
+        <input type="text" name="description" placeholder="description">
+        <label for="genre"></label>
+        <select name="genre" id="genre">
+            <option value="gyser">Gyser</option>
+            <option value="action">Action</option>
+            <option value="thriller">Thriller</option>
+            <option value="komedie">Komedie</option>
+            <option value="fantasy">Fantasy</option>
+            <option value="romantik">Romantik</option>
+            <option value="drama">Drama</option>
+            <option value="mystik">Mystik</option>
+        </select>
+        <label for="pg_rating"></label>
+        <select name="pg_rating" id="pg_rating">
+            <option value="A">A</option>
+            <option value="7">7</option>
+            <option value="11">11</option>
+            <option value="15">15</option>
+            <option value="F">F</option>
+        </select>
+        <label for="release_date"></label>
+        <input type="text" name="release_date" placeholder="release date">
+
+        <button type=submit title="Gem" id="submit">Opret</button>
+    </form>
+
+
+</div>
+<script src="../js/insertmovie.js"></script>
+
+</body>
+</html>
+</body>
+</html>
