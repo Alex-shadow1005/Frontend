@@ -68,17 +68,12 @@ function addSRow(showing) {
     cell = row.insertCell(colCount++);
     const pbPopUp = document.createElement("input");
     pbPopUp.type = "button";
-    pbPopUp.setAttribute('value', 'Slet Kommune');
+    pbPopUp.setAttribute('value', 'Book film');
     pbPopUp.onclick = function () {
         goToBookin(row.rowIndex);
     }
     cell.appendChild(pbPopUp);
-/*
-    const booknow = document.createElement('a');
-    booknow.setAttribute('href', 'booking.html');
-    booknow.innerText = "book nu"
-    cell.appendChild(booknow);
-*/
+
 }
 function createTableSFromMap() {
     out("create table");
