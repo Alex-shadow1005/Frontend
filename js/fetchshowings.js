@@ -78,7 +78,6 @@ async function createShowingMap() {
 }
 
 const pbFetchShowings = document.getElementById('getShowings');
-const tblShowings = document.getElementById('showingTable');
 
 //add event listeners
 pbFetchShowings.addEventListener('click', createShowingMap);

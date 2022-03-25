@@ -24,7 +24,7 @@ async function handleFormSubmit(event) {
         out(formData);
         const responseData = await postFormDataAsJson(url, formData);
         out(responseData);
-        alert(formData.get('employee_email') + ' er oprettet');
+        alert('Bruger er nu oprettet');
 
     } catch (err) {
         alert(err.message);
@@ -50,6 +50,6 @@ async function postFormDataAsJson(url, formData) {
         throw new Error(errorMessage);
     }
     console.log(response.json);
-    return response.json();
+    return window.location.href = "login.html";
 }
 

@@ -24,11 +24,6 @@ async function createMovieMap() {
 async function callMovieMap(){
     await createMovieMap();
 }
-function showMovieMap() {
-    for (const movieKey of movieMap.keys()) {
-        ;//out(movieMap.get(movieKey));
-    }
-}
 
 
 callMovieMap();
