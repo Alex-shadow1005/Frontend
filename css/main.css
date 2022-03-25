@@ -72,7 +72,7 @@ section {
   width: 70%;
   margin-top: 3em; }
 
-.info {
+.info{
   background: url("../img/MicrosoftTeams-imagetest2.png") no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -306,3 +306,17 @@ nav li a:hover {
 
     left: 4.5em;
     top: 2em; } }
+
+.movie-details {
+
+}
+.image_link{
+  float:left;
+  max-width: 512px;
+  max-height: 512px;
+  min-width: 512px;
+}
+.movie_info{
+  text-align:center;
+}
+
