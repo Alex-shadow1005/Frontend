@@ -72,39 +72,58 @@ section {
   width: 70%;
   margin-top: 3em; }
 
-.features-section {
-  background: #20272e;
-  color: white; }
+.info {
+  background: url("../img/abstract-technology-banner-background.jpg") no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: #f2f2f2;
+}
 
-ul.features-list {
+.info:before{
+  position:absolute;
+  top:0px;
+  bottom:0px;
+  left:0px;
+  right:0px;
+}
+
+ul.info {
   margin: 0;
   padding-left: .1em;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr)); }
-ul.features-list li {
-  font-size: 1.1em;
+ul.info li {
+  font-size: 100px;
   margin-bottom: 1em;
   margin-left: 2em;
-  position: relative; }
---------- ul.features-list li:before {
+  position: center; }
+.info li span{
+  color: var(--primary-coler);
+}
+.info li{
+  font-size: 100px;
+  text-align: center;
+}
+
+--------- ul.info li:before {
   content: '';
   left: -2em;
   position: absolute;
   width: 20px;
   height: 20px;
-  background-image: url("../../images/bullet.svg");
   background-size: contain;
   margin-right: .5em; }
 
-.features-section img {
-  display: none; }
 
-.testimonials-section {
+
+.aktuellefilm {
   background: var(--primary-coler);
   color: white;}
 
 
-.testimonials-section #movies img {
+.aktuellefilm #movies img {
   width: 20em;
   height: 20em;
 }
@@ -234,28 +253,28 @@ nav li a:hover {
   .primary-cta {
     margin-right: 1em; }
 
-  ul.features-list {
+  ul.info {
     display: block;
     margin-left: 5em; }
-  ul.features-list li {
+  ul.info li {
     font-size: 1.4em; }
-  ul.features-list li:before {
+  ul.info li:before {
     width: 30px;
     height: 30px; }
 
-  .features-section {
+  .info {
     position: relative; }
 
-  .features-section img {
+  .info img {
     display: block;
     position: absolute;
     right: 0;
     width: 350px;
     bottom: -2em; }
 
-  .testimonials-section ul {
+  .aktuellefilm ul {
     display: flex; }
-  .testimonials-section ul li {
+  .aktuellefilm ul li {
     margin: 0 1em; }
 
   .contact-section {
@@ -272,19 +291,19 @@ nav li a:hover {
   .contact-right iframe {
     height: 100%; } }
 @media only screen and (min-width: 1450px) {
-  .features-section:before {
+  .info:before {
     content: '';
     position: absolute;
     width: 10%;
     height: 20em;
-    background: var(--primary-coler);
+
     left: 0;
     top: -4em; }
-  .features-section:after {
+  .info:after {
     content: '';
     position: absolute;
     width: 200px;
     height: 20em;
-    background: url("../../images/dots.svg");
+
     left: 4.5em;
     top: 2em; } }
