@@ -6,12 +6,11 @@ async function loadMovies() {
     for (let i = 0; i < movies.length; i++){
         const movie = movies[i];
         const showContainer = document.createElement("img");
-        showContainer.classList.add("Card");
         showContainer.src = movie.image_link;
 
         showContainer.addEventListener('click', () => {
-            localStorage.setItem("show", JSON.stringify(movie));
-            window.location.href = "booking/" + movie.movieID;
+            localStorage.setItem("show", JSON.stringify(movie.movieID));
+            window.location.href = "specificmovie.html";
         })
         divContainer.appendChild(showContainer);
     }
