@@ -50,11 +50,11 @@ async function postFormDataAsJson(url, formData) {
     }
     //console.log(response.json);
     //return location.href = "index.html";
-    if(response.status != "404"){
-        sessionStorage.setItem("admin", true);
-        window.location.href = "index.html";
-    }else{
+    if(response.status == "404"){
         alert("Forkert email eller password, prøv igen");
+    }else{
+        sessionStorage.setItem("employee", true);
+        window.location.href = "index.html";
     }
 
 
