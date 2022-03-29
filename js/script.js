@@ -5,6 +5,7 @@ const url = 'http://localhost:8181/showingbydate';
 const renderCalendar = () => {
   //date.setDate(1);
 
+
   const monthDays = document.querySelector(".days");
 
   const lastDay = new Date(
@@ -30,20 +31,20 @@ const renderCalendar = () => {
   const nextDays = 7 - lastDayIndex - 1;
 
   const months = [
-    "January",
-    "February",
-    "March",
+    "Januar",
+    "Februar",
+    "Marts",
     "April",
-    "May",
-    "June",
-    "July",
+    "Maj",
+    "Juni",
+    "Juli",
     "August",
     "September",
-    "October",
+    "Oktober",
     "November",
     "December",
   ];
-
+  // Displayer tagget i HTML med mounth og date
   document.querySelector(".date h1").innerHTML = months[date.getMonth()];
 
   document.querySelector(".date p").innerHTML = new Date().toDateString();
