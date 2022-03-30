@@ -33,7 +33,6 @@ async function handleFormSubmit(event) {
 async function postFormDataAsJson(url, formData) {
     out(formData.entries());
     const plainFormData = Object.fromEntries(formData.entries());
-
     const formDataJsonString = JSON.stringify(plainFormData);
 
     const fetchOptions = {
@@ -47,10 +46,9 @@ async function postFormDataAsJson(url, formData) {
         const errorMessage = await response.text();
         throw new Error(errorMessage);
     }
-    if(response.status == "404"){
+    if(response.status == "400"){
         alert("Forkert email eller password, prøv igen");
     }else{
-        sessionStorage.setItem("employee", true);
         window.location.href = "index.html";
     }
 
